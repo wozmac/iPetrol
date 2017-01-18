@@ -1,0 +1,16 @@
+## git ignore for shared resources.
+./SharedResources/StringResources/
+*.patch
+
+
+
+## git ignore for iOS
+.DS_Store
+xcuserdata/
+DerivedData/
+*.hmap
+*.ipa
+*.xcuserstate
+Pods/
+*dSYM.zip
+
