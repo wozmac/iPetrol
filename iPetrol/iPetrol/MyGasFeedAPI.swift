@@ -16,30 +16,12 @@ import UIKit
 
 class MyGasFeedAPI: NSObject {
     
-
-    func getGasStations(_ latitude: Double, _ longitude: Double, _ radius: Double) -> [MyGasFeedStation]?  {
-        /*
-        let mapDict2 = [
-        "country" : "country",
-        "zip" : "zip",
-        "regPrice" : "reg_price",
-        "midPrice" : "mid_price",
-        "prePrice" : "pre_price",
-        "dieselPrice" : "diesel_price",
-        "regDate" : "reg_date",
-        "midDate" : "mid_date",
-        "preDate" : "pre_date",
-        "dieselDate" : "diesel_date",
-        "address" : "address",
-        "diesel" : "diesel",
-        "id" : "id",
-        "latitude" : "lat",
-        "longitude" : "lng",
-        "station" : "station",
-        "region" : "region",
-        "city" : "city",
-        "distance" : "distance"]
-         */
+    fileprivate var manager: RKObjectManager?
+    fileprivate let API_KEY = "DEMO_KEY"
+    
+    override init() {
+        
+        super.init()
         
         let agencyMapDict = ["id" : "id", "name" : "name"]
         
@@ -80,20 +62,20 @@ class MyGasFeedAPI: NSObject {
             "id" : "id",
             "updated_at" : "updated_at",
             "distance" : "distance"]
-            
+        
         RKObjectManager.setShared(nil)
-        let manager = RKObjectManager(baseURL: NSURL(string: "https://developer.nrel.gov/") as URL!)
+        manager = RKObjectManager(baseURL: NSURL(string: "https://developer.nrel.gov/") as URL!)
         
         //RKMIMETypeSerialization.registerClass(RKNSJSONSerialization.self, forMIMEType: "text/html") // if response has the wrong mime type
         manager!.httpClient.setDefaultHeader("Accept", value: "application/json")
         manager!.httpClient.setDefaultHeader("Content-Type", value: "application/json")
-    
+        
         let stationMapping = RKObjectMapping(for: NRELGasStation.self)
         stationMapping?.addAttributeMappings(from: stationMapDict)
-
+        
         let agencyMapping = RKObjectMapping(for: FederalAgency.self)
         agencyMapping?.addAttributeMappings(from: agencyMapDict)
-
+        
         stationMapping?.addPropertyMapping(RKRelationshipMapping(fromKeyPath: "federal_agency", toKeyPath: "federal_agency", with: agencyMapping))
         
         let responseDescriptor = RKResponseDescriptor(
@@ -105,21 +87,28 @@ class MyGasFeedAPI: NSObject {
         )
         
         manager!.addResponseDescriptor(responseDescriptor)
-
-        manager!.getObjectsAtPath(
-            "api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&fuel_type=ELEC&latitude=47.665249&longitude=-122.057544&radius=50",
-            parameters: nil,
-            success: {(requestOperation, mappingResult) -> Void in
-                print("success")
-                let stations = mappingResult?.array() as! [NRELGasStation]
-                print("\(stations.count)")
-            },
-            
-            failure: {(requestOperation, error) -> Void in
-                print("failure, \(error)")
-            }
+        
+        
+    }
+    
+    func getGasStations(_ latitude: Double, _ longitude: Double, _ radius: Double, completionHandler: @escaping ([NRELGasStation]?) -> Void)  {
+        
+        let queryString = String(format: "api/alt-fuel-stations/v1/nearest.json?api_key=%@&fuel_type=ELEC&latitude=%f&longitude=%f&radius=%f", API_KEY, latitude, longitude, radius)
+        
+        manager!.getObjectsAtPath(queryString,
+                                  parameters: nil,
+                                  success: {(requestOperation, mappingResult) -> Void in
+                                    print("success")
+                                    let stations = mappingResult?.array() as! [NRELGasStation]
+                                    print("\(stations.count)")
+                                    completionHandler(stations)
+        },
+                                  
+                                  failure: {(requestOperation, error) -> Void in
+                                    print("failure, \(error)")
+                                    completionHandler(nil)
+        }
         )
-        return nil
     }
     
 }

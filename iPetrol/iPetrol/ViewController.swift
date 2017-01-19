@@ -67,9 +67,59 @@ class ViewController: UIViewController, MKMapViewDelegate {
             view.addSubview(subview)
             return view
         }
+        else if let annotation = annotation as? StationAnnotation {
+            var view: MKAnnotationView
+            
+            if let dequeuedView = self.mapView.dequeueReusableAnnotationView(withIdentifier: annotation.title!) {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            }
+            else {
+                view = MKAnnotationView(annotation: annotation, reuseIdentifier: annotation.title)
+                view.backgroundColor = UIColor.clear
+                view.image = UIImage(named: "lightning")
+                
+                let markerWidth = 40.0
+                let markerHeight = 40.0
+                let labelWidth = 150.0
+                let labelHeight = 21.0
+                
+                let label = UILabel(frame: CGRect(x: -((labelWidth/2.0) - (markerWidth/2.0)), y: -labelHeight, width:labelWidth, height: labelHeight))  //y: (markerHeight/2.0) - (labelHeight/2.0)
+                label.backgroundColor = UIColor.clear
+                label.alpha = 0.9;
+                label.adjustsFontSizeToFitWidth = true
+                label.layer.borderColor = UIColor.black.cgColor
+                label.layer.borderWidth = 1.0
+                label.layer.cornerRadius = 4.0
+                label.text = annotation.title
+                label.textAlignment = NSTextAlignment.center
+                view.addSubview(label)
+                
+                view.alpha = 0.8
+                view.canShowCallout = true;
+                view.frame = CGRect(x: -markerWidth/2.0, y: -markerHeight/2.0, width:markerWidth, height: markerHeight)
+            }
+            return view
+        }
         return nil
     }
-   
+    
+    func gotStations(_ stations: [NRELGasStation]?) {
+        if let locations = stations {
+            print("gotStations \(locations.count)")
+                for station in locations {
+                    self.mapView.addAnnotation(StationAnnotation(title: station.station_name!,
+                                                                locationName: "",
+                                                                discipline: "",
+                                                                coordinate: CLLocationCoordinate2D(latitude: station.latitude as! CLLocationDegrees, longitude: station.longitude as! CLLocationDegrees)))
+                    print("Showing driver \(station.id), \(station.latitude) \(station.longitude)")
+                }
+            }
+    }
+
+
+
+
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         
         if userLocation.coordinate.latitude != 0.0 && userLocation.coordinate.longitude != 0.0 {
@@ -77,10 +127,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         }
         
         let api = MyGasFeedAPI()
-        let result = api.getGasStations(userLocation.coordinate.latitude, userLocation.coordinate.longitude, 5.0)
-        if (result == nil) {
-            print("nil")
-        }
+        api.getGasStations(userLocation.coordinate.latitude, userLocation.coordinate.longitude, 5.0, completionHandler: gotStations)
 /*
         self.geocoder!.reverseGeocodeLocation(self.mapView.userLocation.location!,
                                               completionHandler: {(placemarks:[CLPlacemark]?, error:Error?) -> Void in

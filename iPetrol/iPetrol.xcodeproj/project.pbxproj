@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		680B6D77C910FB8C6BBF7521 /* libPods-iPetrol.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51F598A8F331043FFC542894 /* libPods-iPetrol.a */; };
+		981FFCC51E315C4D00708528 /* StationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FFCC41E315C4D00708528 /* StationAnnotation.swift */; };
 		98581A9C1E2C7A8300564DC1 /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = 98581A9B1E2C7A8300564DC1 /* podfile */; };
 		98581AA01E2D4AAA00564DC1 /* MyGasFeedStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98581A9F1E2D4AAA00564DC1 /* MyGasFeedStation.swift */; };
 		98581AA31E2D503800564DC1 /* MyGasFeedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98581AA21E2D503800564DC1 /* MyGasFeedAPI.swift */; };
@@ -43,6 +44,7 @@
 		51F598A8F331043FFC542894 /* libPods-iPetrol.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iPetrol.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68372F495F77FC78EC1B9026 /* Pods-iPetrol.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetrol.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iPetrol/Pods-iPetrol.debug.xcconfig"; sourceTree = "<group>"; };
 		75EDE9982C1853BAB74C39FC /* Pods-iPetrol.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iPetrol.release.xcconfig"; path = "Pods/Target Support Files/Pods-iPetrol/Pods-iPetrol.release.xcconfig"; sourceTree = "<group>"; };
+		981FFCC41E315C4D00708528 /* StationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationAnnotation.swift; sourceTree = "<group>"; };
 		98581A9B1E2C7A8300564DC1 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
 		98581A9F1E2D4AAA00564DC1 /* MyGasFeedStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGasFeedStation.swift; sourceTree = "<group>"; };
 		98581AA11E2D4D7100564DC1 /* iPetrol-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iPetrol-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
@@ -127,6 +129,7 @@
 				98581AA11E2D4D7100564DC1 /* iPetrol-Bridging-Header.h */,
 				98581AA21E2D503800564DC1 /* MyGasFeedAPI.swift */,
 				98EE26C51E2EE892002FB853 /* NRELGasStation.swift */,
+				981FFCC41E315C4D00708528 /* StationAnnotation.swift */,
 			);
 			path = iPetrol;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				98581AA31E2D503800564DC1 /* MyGasFeedAPI.swift in Sources */,
+				981FFCC51E315C4D00708528 /* StationAnnotation.swift in Sources */,
 				98581AA01E2D4AAA00564DC1 /* MyGasFeedStation.swift in Sources */,
 				98EE26C61E2EE892002FB853 /* NRELGasStation.swift in Sources */,
 				98A96F211E2BE39D0070FF72 /* ViewController.swift in Sources */,
