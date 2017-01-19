@@ -15,21 +15,16 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     static let mapRectangleHeightWidth = 2000.0
-    static let driverLocationUpdateFrequencySec = 10.0
-    private var currentAddress: String?
-    
+
     fileprivate var locationManager: CLLocationManager?
     fileprivate var geocoder: CLGeocoder?
-    fileprivate var placemark: CLPlacemark?
-        
     
     private lazy var __once: () = {
         
         let adjustedRegion = self.mapView.regionThatFits(MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, mapRectangleHeightWidth, mapRectangleHeightWidth))
         
         self.mapView.setRegion(adjustedRegion, animated: true)
-        //var updateTimer = Timer.scheduledTimer(timeInterval: driverLocationUpdateFrequencySec, target: self, selector: #selector(MapViewController.showDrivers), userInfo: nil, repeats: true)
-        //self.showDrivers()
+
     }()
 
     
@@ -93,7 +88,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 label.layer.cornerRadius = 4.0
                 label.text = annotation.title
                 label.textAlignment = NSTextAlignment.center
-                view.addSubview(label)
+                //view.addSubview(label)
                 
                 view.alpha = 0.8
                 view.canShowCallout = true;
@@ -126,21 +121,8 @@ class ViewController: UIViewController, MKMapViewDelegate {
             _ = self.__once
         }
         
-        let api = MyGasFeedAPI()
+        let api = NRELAPI()
         api.getGasStations(userLocation.coordinate.latitude, userLocation.coordinate.longitude, 5.0, completionHandler: gotStations)
-/*
-        self.geocoder!.reverseGeocodeLocation(self.mapView.userLocation.location!,
-                                              completionHandler: {(placemarks:[CLPlacemark]?, error:Error?) -> Void in
-                                                if let placemarks = placemarks {
-                                                    self.placemark = placemarks[0]
-                                                    self.currentAddress = ABCreateStringWithAddressDictionary((self.placemark?.addressDictionary)!, false)
-                                                    //self.setDestinationButton.isEnabled = true
-                                                    //self.currentLocationButton.isEnabled = true
-                                                    
-                                                }
-                                                
-        } )
- */
     }
     
     override func didReceiveMemoryWarning() {

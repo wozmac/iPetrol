@@ -14,7 +14,7 @@ import UIKit
 // https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=DEMO_KEY&fuel_type=ELEC&latitude=47.665249&longitude=-122.057544&radius=5
 
 
-class MyGasFeedAPI: NSObject {
+class NRELAPI: NSObject {
     
     fileprivate var manager: RKObjectManager?
     fileprivate let API_KEY = "DEMO_KEY"

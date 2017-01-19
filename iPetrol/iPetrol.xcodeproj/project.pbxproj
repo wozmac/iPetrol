@@ -11,7 +11,7 @@
 		981FFCC51E315C4D00708528 /* StationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981FFCC41E315C4D00708528 /* StationAnnotation.swift */; };
 		98581A9C1E2C7A8300564DC1 /* podfile in Resources */ = {isa = PBXBuildFile; fileRef = 98581A9B1E2C7A8300564DC1 /* podfile */; };
 		98581AA01E2D4AAA00564DC1 /* MyGasFeedStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98581A9F1E2D4AAA00564DC1 /* MyGasFeedStation.swift */; };
-		98581AA31E2D503800564DC1 /* MyGasFeedAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98581AA21E2D503800564DC1 /* MyGasFeedAPI.swift */; };
+		98581AA31E2D503800564DC1 /* NRELAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98581AA21E2D503800564DC1 /* NRELAPI.swift */; };
 		98A96F1F1E2BE39D0070FF72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A96F1E1E2BE39D0070FF72 /* AppDelegate.swift */; };
 		98A96F211E2BE39D0070FF72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A96F201E2BE39D0070FF72 /* ViewController.swift */; };
 		98A96F241E2BE39D0070FF72 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 98A96F221E2BE39D0070FF72 /* Main.storyboard */; };
@@ -48,7 +48,7 @@
 		98581A9B1E2C7A8300564DC1 /* podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = podfile; sourceTree = "<group>"; };
 		98581A9F1E2D4AAA00564DC1 /* MyGasFeedStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGasFeedStation.swift; sourceTree = "<group>"; };
 		98581AA11E2D4D7100564DC1 /* iPetrol-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iPetrol-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		98581AA21E2D503800564DC1 /* MyGasFeedAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGasFeedAPI.swift; sourceTree = "<group>"; };
+		98581AA21E2D503800564DC1 /* NRELAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NRELAPI.swift; sourceTree = "<group>"; };
 		98A96F1B1E2BE39D0070FF72 /* iPetrol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPetrol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A96F1E1E2BE39D0070FF72 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98A96F201E2BE39D0070FF72 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 				98A96F2A1E2BE39D0070FF72 /* Info.plist */,
 				98581A9F1E2D4AAA00564DC1 /* MyGasFeedStation.swift */,
 				98581AA11E2D4D7100564DC1 /* iPetrol-Bridging-Header.h */,
-				98581AA21E2D503800564DC1 /* MyGasFeedAPI.swift */,
+				98581AA21E2D503800564DC1 /* NRELAPI.swift */,
 				98EE26C51E2EE892002FB853 /* NRELGasStation.swift */,
 				981FFCC41E315C4D00708528 /* StationAnnotation.swift */,
 			);
@@ -359,7 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98581AA31E2D503800564DC1 /* MyGasFeedAPI.swift in Sources */,
+				98581AA31E2D503800564DC1 /* NRELAPI.swift in Sources */,
 				981FFCC51E315C4D00708528 /* StationAnnotation.swift in Sources */,
 				98581AA01E2D4AAA00564DC1 /* MyGasFeedStation.swift in Sources */,
 				98EE26C61E2EE892002FB853 /* NRELGasStation.swift in Sources */,
