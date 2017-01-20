@@ -19,7 +19,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     fileprivate var locationManager: CLLocationManager?
     fileprivate var geocoder: CLGeocoder?
     
-    private lazy var __once: () = {
+    private lazy var doOnce: () = {
         
         let adjustedRegion = self.mapView.regionThatFits(MKCoordinateRegionMakeWithDistance(self.mapView.userLocation.coordinate, mapRectangleHeightWidth, mapRectangleHeightWidth))
         
@@ -76,9 +76,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 
                 let markerWidth = 40.0
                 let markerHeight = 40.0
+
+                /*
                 let labelWidth = 150.0
                 let labelHeight = 21.0
-                
                 let label = UILabel(frame: CGRect(x: -((labelWidth/2.0) - (markerWidth/2.0)), y: -labelHeight, width:labelWidth, height: labelHeight))  //y: (markerHeight/2.0) - (labelHeight/2.0)
                 label.backgroundColor = UIColor.clear
                 label.alpha = 0.9;
@@ -88,7 +89,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 label.layer.cornerRadius = 4.0
                 label.text = annotation.title
                 label.textAlignment = NSTextAlignment.center
-                //view.addSubview(label)
+                view.addSubview(label)*/
                 
                 view.alpha = 0.8
                 view.canShowCallout = true;
@@ -118,7 +119,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         
         if userLocation.coordinate.latitude != 0.0 && userLocation.coordinate.longitude != 0.0 {
-            _ = self.__once
+            _ = self.doOnce
         }
         
         let api = NRELAPI()
